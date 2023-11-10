@@ -22,11 +22,10 @@ from utils import get_func_queue
 
 
 class BotText:
-    start ="🖐به ربات دانلودر خوش آمدید. برای راهنمایی /help را ارسال کنید."
-    help = f"""
-1. این ربات به درستی در حال اجرا است . اگر کار نمی‌کند، لطفاً چند دقیقه صبر کنید و دوباره لینک را ارسال کنید.
+    start ="welcome send /help for help"
+    help = f"""bot is working correctly please wait
 
-4. سورس ربات: https://github.com/Ptechgithub/ytdl
+coded by @l3lackvpn
 
 💢 دستورات
 /start
@@ -35,41 +34,8 @@ class BotText:
 /about
     """
 
-    about = "✅️ ربات دانلودر یوتیوب\n\nآدرس گیتهاب:\n https://github.com/Ptechgithub/ytdl"
 
-    buy = f"""
-**Terms:**
-1. You can use this service free of charge for up to {FREE_DOWNLOAD} downloads within a 24-hour period, regardless of whether the download is successful or not.
-
-2. You can purchase additional download tokens, which will be valid indefinitely.
-
-3. I will not gather any personal information, so I won't know how many or which videos you have downloaded.
-
-4. Refunds are possible, but you will be responsible for the processing fee charged by the payment provider (Stripe, Buy Me a Coffee, etc.).
-
-5. I will record your unique ID after a successful payment, which is usually your payment ID or email address.
-
-6. Paid user can change default download mode to Local mode in settings, which is faster. If your used up all your tokens, you will be reset to default mode.
-
-**Download token price:**
-1. Everyone: {FREE_DOWNLOAD} tokens per 24 hours, free of charge.
-2. 1 USD == {TOKEN_PRICE} tokens, valid indefinitely.
-
-**Payment option:**
-1.  AFDIAN(AliPay, WeChat Pay and PayPal): {AFD_LINK}
-2. Buy me a coffee: {COFFEE_LINK}
-3. Telegram Payment(Stripe), see following invoice.
-
-**After payment:**
-
-1. Afdian: Provide your order number with the /redeem command (e.g., `/redeem 123456`).
-2. Buy Me a Coffee: Provide your email with the /redeem command (e.g., `/redeem some@one.com`). **Use different email each time.**
-3. Telegram Payment: Your payment will be automatically activated.
-
-Want to buy more token at once? Let's say 100? Here you go! `/buy 123`
-    """
     private = "This bot is for private use"
-    membership_require = f"You need to join this group or channel to use this bot\n\nhttps://t.me/{REQUIRED_MEMBERSHIP}"
 
     settings = """
 لطفاً فرمت و کیفیت مورد نظر برای ویدیوی خود را انتخاب کنید. توجه داشته باشید که این تنظیمات فقط برای ویدیوهای یوتیوب اعمال می‌شوند.
@@ -88,9 +54,9 @@ Want to buy more token at once? Let's say 100? Here you go! `/buy 123`
     def get_receive_link_text() -> str:
         reserved = get_func_queue("reserved")
         if ENABLE_CELERY and reserved:
-            text = f"درخواست بیش از حد مجاز.  درخواست شما در لیست انتظار قرار گرفت. {reserved}."
+            text = f"more request than you can please wait {reserved}."
         else:
-            text = "درخواست شما به لیست انتظار اضافه شد.\n در حال پردازش لطفا صبور باشید🌹...\n\n"
+            text = "Your request has been added please wait"
 
         return text
 
